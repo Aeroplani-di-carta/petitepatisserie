@@ -10,9 +10,11 @@ hero:
 
 ::hero{:title=hero.title :description=hero.description :cta=hero.cta :img=hero.img}
 ::
-::sticky-menu
+:sticky-menu
+:page-wrapper{fetch="home/storia" bg="/img/wafer.jpeg" :center=true}
+::page-wrapper{fetch="home/dalla-puglia" container}
+ ![Flour](/img/flour.png)
 ::
-:page-wrapper{fetch="home/storia" bg="https://loremflickr.com/640/360" :center=true}
-::page-wrapper
-No Wrap
-::
+:skew-element{fetch="/home/esplosione-di-gusto" img="/img/cupcake2.jpg" }
+:page-wrapper{fetch="home/marchi"}
+

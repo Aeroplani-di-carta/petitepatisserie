@@ -1,11 +1,9 @@
 <script lang="ts" setup></script>
 
 <template>
-  <header
-    class="w-full bg-primary-950 h-20 text-white flex items-center justify-center"
-  >
+  <header class="w-full h-20 text-white flex items-center justify-center fixed">
     <div class="container">
-      <Logo />
+      <Logo dark />
     </div>
   </header>
 </template>

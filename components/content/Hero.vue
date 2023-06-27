@@ -16,7 +16,7 @@ defineProps({
       <NuxtLink :to="cta">Scopri</NuxtLink>
     </div>
     <div class="max-h-[30rem]">
-      <img :src="img" class="object-cover w-full h-full" />
+      <slot><img :src="img" class="object-cover w-full h-full" /></slot>
     </div>
   </article>
 </template>
