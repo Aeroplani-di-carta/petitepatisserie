@@ -18,7 +18,6 @@ const articles = await queryContent(`/${props.fetch}`).where({ img: { $exists: t
 <template>
   
   <div :class="{ container }" class="space-y-12">
-    <ContentDoc :path="`/${fetch}`" v-if="fetch" class="prose" />
     <div class="grid grid-cols-custom gap-12" :style="`grid-template-columns: repeat(${column}, minmax(0, 1fr))`">
       <div class="w-full aspect-square" v-for="article in articles" :key="article._path">
         <NuxtLink :to="article._path" class="hover:opacity-60">

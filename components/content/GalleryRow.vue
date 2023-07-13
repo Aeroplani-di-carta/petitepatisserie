@@ -19,7 +19,6 @@ const custom_width=90/Number(props.column)
 <template>
 
  <div :class="{container} " class="space-y-12">
-  <ContentDoc :path="`/${fetch}`" v-if="fetch" class="prose" />
   <div class="relative w-full flex snap-x snap-mandatory overflow-x-auto gap-12 py-12">
     <div :style="`width: ${custom_width}%`" class="aspect-square snap-start scroll-mx-6 shrink-0" v-for="article in articles" :key="article._path">
       <NuxtLink :to="article._path">
