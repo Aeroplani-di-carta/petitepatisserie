@@ -1,0 +1,27 @@
+{
+  "id": "sticky_menu",
+  "type": "SharedSlice",
+  "name": "StickyMenu",
+  "description": "StickyMenu",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "label": {
+          "type": "Text",
+          "config": { "label": "label", "placeholder": "" }
+        },
+        "route": {
+          "type": "Link",
+          "config": { "label": "route", "placeholder": "", "select": "media" }
+        }
+      }
+    }
+  ]
+}

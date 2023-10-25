@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const home = await useAsyncData("home", () => queryContent("home").find());
-console.log("HERO! ", home.data.value);
+// const home = await useAsyncData("home", () => queryContent("home").find());
+// console.log("HERO! ", home.data.value);
 </script>
 <template>
   <main class="relative max-w-none">
-    <AppHero title="home?.data.value?.hero" description="test" cta="Scopri" />
+    <!-- <AppHero title="home?.data.value?.hero" description="test" cta="Scopri" /> -->
     <StickyMenu />
     <PageWrapper container> Ciao </PageWrapper>
     <PageWrapper container> Wafer </PageWrapper>

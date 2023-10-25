@@ -1,0 +1,16 @@
+{
+  "id": "related_products",
+  "type": "SharedSlice",
+  "name": "RelatedProducts",
+  "description": "RelatedProducts",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

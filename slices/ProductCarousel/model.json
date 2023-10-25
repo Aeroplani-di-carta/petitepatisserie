@@ -1,0 +1,37 @@
+{
+  "id": "product_carousel",
+  "type": "SharedSlice",
+  "name": "ProductCarousel",
+  "description": "ProductCarousel",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "product": {
+          "type": "Link",
+          "config": {
+            "label": "Product",
+            "select": "document",
+            "customtypes": [
+              "product"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

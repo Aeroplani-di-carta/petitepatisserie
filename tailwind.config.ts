@@ -9,7 +9,7 @@ module.exports = {
     "plugins/**/*.{js,ts}",
     "App.{js,ts,vue}",
     "app.{js,ts,vue}",
-    "./node_modules/tw-elements/dist/js/**/*.js",
+    "slices/**/*.vue",
   ],
   theme: {
     container: {
