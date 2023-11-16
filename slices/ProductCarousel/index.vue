@@ -30,19 +30,16 @@ products.value = await Promise.all(
   <section
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
-  >
-    {{ slice.primary.heading }}
+  ><div class="container">
+      <h1 style="color:red;">{{ slice.primary.heading }}</h1>
 
     <!-- <PrismicText :field="slice.primary"></PrismicText> -->
-    <pre>
-  {{ slice.items.length }}
-</pre
-    >
     <ul>
       <li v-for="(card, c) in products" :key="c">
         <ProductCard :product="card"></ProductCard>
       </li>
     </ul>
+    </div>
   </section>
 </template>
 <style lang="postcss">
