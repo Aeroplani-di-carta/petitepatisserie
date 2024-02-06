@@ -1,6 +1,6 @@
 ---
 navigation: false
-layout: default
+layout: home
 hero:
   title: "Scopri il gusto della dolcezza"
   description: "Un mondo di gusto a portata di click"
