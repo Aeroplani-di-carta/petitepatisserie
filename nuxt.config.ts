@@ -8,11 +8,6 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
   css: ["~~/assets/css/app.css"],
-
-  content: {
-    documentDriven: true,
-  },
-
   postcss: {
     plugins: {
       "tailwindcss/nesting": {},
