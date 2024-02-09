@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <NuxtPage></NuxtPage>
-  </div>
+  <NuxtPage />
 </template>
 <style lang="postcss">
 html,

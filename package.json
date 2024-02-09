@@ -10,24 +10,25 @@
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "yarn lint:js && yarn lint:prettier",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
+    "lintfix": "prettier --write --list-different . && yarn lint:js --fix",
+    "server": "npx decap-server"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.7.0",
+    "@nuxt/content": "^2.12.0",
     "@nuxt/devtools": "latest",
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@nuxtjs/google-fonts": "^3.0.1",
-    "@nuxtjs/tailwindcss": "^6.8.0",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxtjs/google-fonts": "^3.1.3",
+    "@nuxtjs/tailwindcss": "^6.11.3",
     "@types/node": "^20",
-    "@typescript-eslint/parser": "^5.60.1",
-    "eslint": "^8.43.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "nuxt": "^3.6.1",
-    "prettier": "^2.8.8",
-    "typescript": "^5.1.3"
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "nuxt": "^3.10.1",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/typography": "^0.5.10"
   }
 }
