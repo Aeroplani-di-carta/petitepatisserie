@@ -1,0 +1,210 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: public/img
+public_folder: /img
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "content/products"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    create: true
+    preview: false
+    view_filters:
+      - label: Posts Without Index
+        field: title
+        pattern: front matter post
+      - label: 🎉 New
+        field: isNew
+        pattern: true
+    view_groups:
+      - label: Categories
+        field: categories
+      - label: Tags
+        field: tags
+      - label: Gruppo
+        field: group
+      - label: New
+        field: isNew
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      # - { name: "type", label: "Type", widget: "string" }
+      - {
+          name: "isNew",
+          label: "Novità",
+          widget: "boolean",
+          required: false,
+          default: false,
+        }
+      - {
+          name: "group",
+          label: "Gruppo",
+          widget: "list",
+          required: false,
+          allow_add: true,
+          add_to_top: true,
+          default: ["sfiziosi"],
+        }
+      - {
+          name: "featured",
+          label: "Featured",
+          widget: "boolean",
+          required: false,
+        }
+      - {
+          name: "visible",
+          label: "Visible",
+          widget: "boolean",
+          required: true,
+          default: true,
+        }
+      - { name: "body", label: "Body", widget: "markdown", required: false }
+      - {
+          name: "price",
+          label: "Price",
+          widget: "number",
+          required: false,
+          value_type: "float",
+        }
+      - {
+          label: "Varianti",
+          name: "variants",
+          widget: "list",
+          collapsed: true,
+          fields:
+            [
+              { label: "Nome ", name: "variation", widget: "string" },
+              {
+                label: "Prezzo",
+                name: "price",
+                widget: "number",
+                value_type: "float",
+              },
+            ],
+        }
+      - {
+          name: "categories",
+          label: "Categories",
+          widget: "relation",
+          collection: "categories",
+          value_field: "{{slug}}",
+          display_fields: ["title"],
+          multiple: true,
+          search_fields: ["title", "slug"],
+        }
+      - {
+          name: "tags",
+          label: "Tags",
+          widget: "relation",
+          collection: "tags",
+          value_field: "{{slug}}",
+          display_fields: ["title"],
+          search_fields: ["title"],
+          required: false,
+          multiple: true,
+          allow_add: true,
+        }
+      - {
+          name: "alergens",
+          label: "Allergeni",
+          widget: "relation",
+          collection: "alergens",
+          value_field: "{{slug}}",
+          display_fields: ["title"],
+          search_fields: ["title"],
+          required: false,
+          multiple: true,
+        }
+      - { name: "images", label: "Images", widget: "image", required: false }
+      - { name: "order", label: "Order", widget: "number", required: false }
+  - name: "categories"
+    label: "Categories"
+    folder: "content/categories"
+    slug: "{{title}}"
+    format: "frontmatter"
+    create: true
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - {
+          name: "featured",
+          label: "Featured",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          name: "visible",
+          label: "Visible",
+          widget: "boolean",
+          default: true,
+          required: false,
+        }
+      - {
+          name: "custom",
+          label: "custom",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - { name: "images", label: "Images", widget: "image", required: false }
+      - { name: "body", label: "Body", widget: "markdown" }
+      - {
+          name: "order",
+          label: "Order",
+          widget: "number",
+          required: false,
+          default: 9999,
+        }
+  - name: "tags"
+    label: "Tags"
+    folder: "content/tags"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    create: true
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - {
+          name: "featured",
+          label: "Featured",
+          widget: "boolean",
+          required: false,
+        }
+      - {
+          name: "visible",
+          label: "Visible",
+          widget: "boolean",
+          required: false,
+        }
+      - {
+          name: "images",
+          label: "Images",
+          widget: "image",
+          required: false,
+          allow_multiple: false,
+        }
+      - { name: "body", label: "Body", widget: "markdown", required: false }
+      - { name: "order", label: "Order", widget: "number", required: false }
+  - name: "ingredients"
+    label: "Ingredients"
+    folder: "content/ingredients"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { name: "id", label: "ID", widget: "string" }
+      - { name: "title", label: "Title", widget: "string" }
+  - name: "alergens"
+    label: "Allergeni"
+    folder: "content/alergens"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "body", label: "Body", widget: "text", required: false }
+      - { name: "icon", label: "Icon", widget: "image", required: false }
