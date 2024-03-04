@@ -1,7 +1,6 @@
 ---
-title: HOME_PAGE
+title: Home Page
 image: home_page.jpg
-tags: ['homepage']
 navigation: false
 ---
 # HOME PAGE

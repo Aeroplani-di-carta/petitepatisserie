@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Carousel, Slide } from "vue3-carousel";
+import "vue3-carousel/dist/carousel.css";
 const props = defineProps({
   container: {
     type: Boolean,
@@ -10,7 +12,7 @@ const props = defineProps({
   },
   column:{
     type:String,
-    default: "0"
+    default: "1"
   }
 });
 const articles = await queryContent(`/${props.fetch}`).where({img:{$exists:true}}).find()

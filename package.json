@@ -29,6 +29,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.10"
+    "@tailwindcss/typography": "^0.5.10",
+    "vue3-carousel": "^0.3.1"
   }
 }

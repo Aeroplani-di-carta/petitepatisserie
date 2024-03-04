@@ -1,21 +1,24 @@
 <script lang="ts" setup>
 const { navigation } = useContent();
+
+console.log("Content nav",navigation)
 </script>
 
 <template>
   <div class="sticky top-0 z-50 w-full py-6 bg-primary-100">
     <nav class="flex-grow hidden md:block container">
       <ul class="flex gap-6">
+        <!-- {{ navigation }} -->
         <li v-for="nav in navigation" :key="nav._path">
           <div v-if="nav.children" class="relative nested">
-            <NuxtLink :to="nav._path" active-class="active">{{
+            <NuxtLink :to="nav._path" active-class="active" class="capitalize">{{
               nav.title
             }}</NuxtLink>
-            <ul class="absolute p-4 shadow-lg bg-primary-100">
+            <ul class="absolute p-4 shadow-lg bg-primary-100 max-h-96 overflow-y-auto">
               <li v-for="child in nav.children" :key="child._id">
                 <NuxtLink
                   :to="child._path"
-                  class="whitespace-nowrap hover:underline"
+                  class="whitespace-nowrap hover:underline capitalize"
                   active-class="active"
                   >{{ child.title }}</NuxtLink
                 >
