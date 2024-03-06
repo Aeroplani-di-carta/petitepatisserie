@@ -1,5 +1,6 @@
 ---
 title: PRODOTTI
+navigation: false
 image: prodotti.jpg
 tags: ['prodotti']
 ---
