@@ -1,14 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
+
   nitro: {
     preset: "netlify",
   },
+
   devtools: { enabled: true },
   css: ["~~/assets/css/app.css"],
+
   content: {
     documentDriven: true,
   },
+
   postcss: {
     plugins: {
       "tailwindcss/nesting": {},
@@ -16,5 +20,16 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@nuxt/content", "@nuxtjs/tailwindcss"],
+
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/prismic"],
+
+  prismic: {
+    endpoint: "petitepatisserie",
+    toolbar: false,
+    preview: false,
+    clientConfig: {
+      brokenRoute: "/404",
+      routes: [{ type: "homepage", path: "/" }],
+    },
+  },
 });
