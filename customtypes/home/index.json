@@ -11,6 +11,33 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "alternate_grid": {
+              "type": "SharedSlice"
+            },
+            "warning": {
+              "type": "SharedSlice"
+            },
+            "text": {
+              "type": "SharedSlice"
+            },
+            "quotes": {
+              "type": "SharedSlice"
+            },
+            "newsletter": {
+              "type": "SharedSlice"
+            },
+            "multi_column": {
+              "type": "SharedSlice"
+            },
+            "app_footer": {
+              "type": "SharedSlice"
+            },
+            "heading": {
+              "type": "SharedSlice"
+            },
+            "gallery": {
+              "type": "SharedSlice"
+            },
             "contact_form": {
               "type": "SharedSlice"
             },

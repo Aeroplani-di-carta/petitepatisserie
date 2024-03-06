@@ -23,8 +23,7 @@ export default defineNuxtConfig({
     toolbar: false,
     preview: false,
     clientConfig: {
-      brokenRoute: "/404",
-      routes: [{ type: "homepage", path: "/" }],
+      routes: [{ type: "home", path: "/" }],
     },
   },
 });

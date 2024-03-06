@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"quote": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Aliqua quis laboris laborum deserunt sit officia dolor laboris ex velit eiusmod aute irure. Enim deserunt ut enim consectetur commodo esse sit laboris eu."
+						}
+					}
+				]
+			},
+			"author": {
+				"__TYPE__": "FieldContent",
+				"value": "steady",
+				"type": "Text"
+			},
+			"bg_color": {
+				"__TYPE__": "FieldContent",
+				"value": "#a377fc",
+				"type": "Color"
+			}
+		},
+		"items": []
+	}
+]
