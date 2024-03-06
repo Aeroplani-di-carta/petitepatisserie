@@ -15,8 +15,23 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/prismic"],
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+    head: {
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+    },
+  },
+  colorMode: {
+    preference: "light",
+  },
+  modules: [
+    "@nuxt/ui",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/prismic",
+    "nuxt-icon",
+    "@vueuse/motion/nuxt",
+    "@nuxt/devtools",
+  ],
 
   prismic: {
     endpoint: "petitepatisserie",

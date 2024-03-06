@@ -4,6 +4,38 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Content for Category documents
+ */
+interface CategoryDocumentData {
+  /**
+   * Title field in *Category*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Category document from Prismic
+ *
+ * - **API ID**: `category`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CategoryDocumentData>,
+    "category",
+    Lang
+  >;
+
 type HomeDocumentDataSlicesSlice =
   | AlternateGridSlice
   | WarningSlice
@@ -80,6 +112,53 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
+type NavigationDocumentDataSlicesSlice = MenuItemSlice;
+
+/**
+ * Content for Navigation documents
+ */
+interface NavigationDocumentData {
+  /**
+   * Slice Zone field in *Navigation*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
+}
+
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NavigationDocumentData>,
+    "navigation",
+    Lang
+  >;
+
+type ProductDocumentDataSlicesSlice =
+  | AlternateGridSlice
+  | HeroSlice
+  | WarningSlice
+  | TextSlice
+  | SkewHeroSlice
+  | RelatedProductsSlice
+  | QuotesSlice
+  | NewsletterSlice
+  | ProductCarouselSlice
+  | HeadingSlice
+  | GallerySlice;
+
 /**
  * Content for Product documents
  */
@@ -107,7 +186,7 @@ interface ProductDocumentData {
   image: prismic.ImageField<never>;
 
   /**
-   * description field in *Product*
+   * Description field in *Product*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -127,6 +206,28 @@ interface ProductDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   cover: prismic.ImageField<never>;
+
+  /**
+   * Category field in *Product*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  category: prismic.ContentRelationshipField<"category">;
+
+  /**
+   * Slice Zone field in *Product*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ProductDocumentDataSlicesSlice>;
 }
 
 /**
@@ -145,7 +246,30 @@ export type ProductDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomeDocument | ProductDocument;
+interface SocialLinksDocumentData {}
+
+/**
+ * Social Links document from Prismic
+ *
+ * - **API ID**: `social_links`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SocialLinksDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SocialLinksDocumentData>,
+    "social_links",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | CategoryDocument
+  | HomeDocument
+  | NavigationDocument
+  | ProductDocument
+  | SocialLinksDocument;
 
 /**
  * Primary content in *AlternateGrid → Primary*
@@ -1635,11 +1759,19 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      CategoryDocument,
+      CategoryDocumentData,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      NavigationDocument,
+      NavigationDocumentData,
+      NavigationDocumentDataSlicesSlice,
       ProductDocument,
       ProductDocumentData,
+      ProductDocumentDataSlicesSlice,
+      SocialLinksDocument,
+      SocialLinksDocumentData,
       AllDocumentTypes,
       AlternateGridSlice,
       AlternateGridSliceDefaultPrimary,

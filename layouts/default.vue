@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen flex flex-col justify-between">
-    <StickyMenu />
+    <AppHeader />
     <div class="">
       <slot />
     </div>

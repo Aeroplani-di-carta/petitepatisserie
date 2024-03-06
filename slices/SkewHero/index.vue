@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Content } from "@prismicio/client";
+import * as prismic from "@prismicio/client";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
 defineProps(
-  getSliceComponentProps<Content.SkewHeroSlice>([
+  getSliceComponentProps<prismic.Content.SkewHeroSlice>([
     "slice",
     "index",
     "slices",
@@ -15,9 +15,9 @@ defineProps(
 
 <template>
   <div
-    class="grid gap-4 py-12 my-20 text-white md:grid-cols-2 bg-primary-950"
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
+    class="grid gap-4 py-12 my-20 text-white md:grid-cols-2 bg-primary-950"
   >
     <div class="" :class="{ 'order-last': slice.primary.reverse }">
       <PrismicImage
@@ -32,7 +32,7 @@ defineProps(
     >
       <!-- <PrismicText :field="body"></PrismicText> -->
 
-      <h3 class="text-primary-500">{{ slice.primary.title }}</h3>
+      <h1 class="text-primary-500">{{ slice.primary.title }}</h1>
       <PrismicRichText :field="slice.primary.body" />
     </div>
   </div>
