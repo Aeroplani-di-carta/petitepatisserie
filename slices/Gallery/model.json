@@ -34,6 +34,15 @@
             "label": "Per Page",
             "placeholder": "5"
           }
+        },
+        "image_contain": {
+          "type": "Boolean",
+          "config": {
+            "label": "Image Contain",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
         }
       },
       "items": {

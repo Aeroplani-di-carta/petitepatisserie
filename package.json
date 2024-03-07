@@ -42,6 +42,7 @@
   "dependencies": {
     "@nuxt/ui": "^2.14.2",
     "@tailwindcss/typography": "^0.5.10",
+    "vue-carousel": "^0.18.0",
     "vue3-carousel": "^0.3.1"
   }
 }

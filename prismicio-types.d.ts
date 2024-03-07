@@ -37,6 +37,10 @@ export type CategoryDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | RelatedProductsSlice
+  | ProductGallerySlice
+  | VideoSlice
+  | VideoGridSlice
   | AlternateGridSlice
   | WarningSlice
   | TextSlice
@@ -246,7 +250,77 @@ export type ProductDocument<Lang extends string = string> =
     Lang
   >;
 
-interface SocialLinksDocumentData {}
+/**
+ * Item in *Social Links → Items*
+ */
+export interface SocialLinksDocumentDataItemsItem {
+  /**
+   * Label field in *Social Links → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_links.items[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * Link field in *Social Links → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_links.items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Image field in *Social Links → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_links.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Icon field in *Social Links → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_links.items[].icon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  icon: prismic.KeyTextField;
+}
+
+/**
+ * Content for Social Links documents
+ */
+interface SocialLinksDocumentData {
+  /**
+   * Title field in *Social Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_links.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Items field in *Social Links*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_links.items[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<SocialLinksDocumentDataItemsItem>>;
+}
 
 /**
  * Social Links document from Prismic
@@ -599,6 +673,17 @@ export interface GallerySliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#number
    */
   per_page: prismic.NumberField;
+
+  /**
+   * Image Contain field in *Gallery → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: gallery.primary.image_contain
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  image_contain: prismic.BooleanField;
 }
 
 /**
@@ -1319,6 +1404,76 @@ export type ProductCarouselSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ProductGallery → Primary*
+ */
+export interface ProductGallerySliceDefaultPrimary {
+  /**
+   * Title field in *ProductGallery → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_gallery.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Desxcription field in *ProductGallery → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_gallery.primary.desxcription
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  desxcription: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ProductGallery → Items*
+ */
+export interface ProductGallerySliceDefaultItem {
+  /**
+   * Product field in *ProductGallery → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_gallery.items[].product
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  product: prismic.ContentRelationshipField<"product">;
+}
+
+/**
+ * Default variation for ProductGallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductGallerySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProductGallerySliceDefaultPrimary>,
+  Simplify<ProductGallerySliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ProductGallery*
+ */
+type ProductGallerySliceVariation = ProductGallerySliceDefault;
+
+/**
+ * ProductGallery Shared Slice
+ *
+ * - **API ID**: `product_gallery`
+ * - **Description**: ProductGallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductGallerySlice = prismic.SharedSlice<
+  "product_gallery",
+  ProductGallerySliceVariation
+>;
+
+/**
  * Primary content in *Quotes → Primary*
  */
 export interface QuotesSliceDefaultPrimary {
@@ -1645,6 +1800,138 @@ type TextSliceVariation = TextSliceDefault;
 export type TextSlice = prismic.SharedSlice<"text", TextSliceVariation>;
 
 /**
+ * Primary content in *Video → Primary*
+ */
+export interface VideoSliceDefaultPrimary {
+  /**
+   * Title field in *Video → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Video Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VideoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Video*
+ */
+type VideoSliceVariation = VideoSliceDefault;
+
+/**
+ * Video Shared Slice
+ *
+ * - **API ID**: `video`
+ * - **Description**: Video
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoSlice = prismic.SharedSlice<"video", VideoSliceVariation>;
+
+/**
+ * Primary content in *VideoGrid → Primary*
+ */
+export interface VideoGridSliceDefaultPrimary {
+  /**
+   * Title field in *VideoGrid → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_grid.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *VideoGrid → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_grid.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Columns field in *VideoGrid → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_grid.primary.columns
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  columns: prismic.NumberField;
+}
+
+/**
+ * Primary content in *VideoGrid → Items*
+ */
+export interface VideoGridSliceDefaultItem {
+  /**
+   * Title field in *VideoGrid → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_grid.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Embed field in *VideoGrid → Items*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_grid.items[].embed
+   * - **Documentation**: https://prismic.io/docs/field#embed
+   */
+  embed: prismic.EmbedField;
+}
+
+/**
+ * Default variation for VideoGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VideoGridSliceDefaultPrimary>,
+  Simplify<VideoGridSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *VideoGrid*
+ */
+type VideoGridSliceVariation = VideoGridSliceDefault;
+
+/**
+ * VideoGrid Shared Slice
+ *
+ * - **API ID**: `video_grid`
+ * - **Description**: VideoGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoGridSlice = prismic.SharedSlice<
+  "video_grid",
+  VideoGridSliceVariation
+>;
+
+/**
  * Primary content in *Warning → Primary*
  */
 export interface WarningSliceDefaultPrimary {
@@ -1772,6 +2059,7 @@ declare module "@prismicio/client" {
       ProductDocumentDataSlicesSlice,
       SocialLinksDocument,
       SocialLinksDocumentData,
+      SocialLinksDocumentDataItemsItem,
       AllDocumentTypes,
       AlternateGridSlice,
       AlternateGridSliceDefaultPrimary,
@@ -1829,6 +2117,11 @@ declare module "@prismicio/client" {
       ProductCarouselSliceDefaultItem,
       ProductCarouselSliceVariation,
       ProductCarouselSliceDefault,
+      ProductGallerySlice,
+      ProductGallerySliceDefaultPrimary,
+      ProductGallerySliceDefaultItem,
+      ProductGallerySliceVariation,
+      ProductGallerySliceDefault,
       QuotesSlice,
       QuotesSliceDefaultPrimary,
       QuotesSliceVariation,
@@ -1850,6 +2143,15 @@ declare module "@prismicio/client" {
       TextSliceDefaultPrimary,
       TextSliceVariation,
       TextSliceDefault,
+      VideoSlice,
+      VideoSliceDefaultPrimary,
+      VideoSliceVariation,
+      VideoSliceDefault,
+      VideoGridSlice,
+      VideoGridSliceDefaultPrimary,
+      VideoGridSliceDefaultItem,
+      VideoGridSliceVariation,
+      VideoGridSliceDefault,
       WarningSlice,
       WarningSliceDefaultPrimary,
       WarningSliceVariation,

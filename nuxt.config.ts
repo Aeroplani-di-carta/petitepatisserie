@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   },
 
   devtools: { enabled: true },
-  css: ["~~/assets/css/app.css"],
+  css: ["~~/assets/css/app.css", "~~/assets/css/tailwind.pcss"],
   postcss: {
     plugins: {
       "tailwindcss/nesting": {},

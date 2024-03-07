@@ -17,9 +17,9 @@ defineProps(
   <div
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
-    class="grid gap-4 py-12 my-20 text-white md:grid-cols-2 bg-primary-950"
+    class="grid gap-4 py-12 text-white md:grid-cols-2 bg-primary-950"
   >
-    <div class="" :class="{ 'order-last': slice.primary.reverse }">
+    <div class="z-40" :class="{ 'order-last': slice.primary.reverse }">
       <PrismicImage
         :field="slice.primary.image"
         class="object-cover shadow-2xl max-w-[20rem] aspect-square rounded-xl scale-150 translate-x-20"

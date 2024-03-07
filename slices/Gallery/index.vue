@@ -50,8 +50,11 @@ const breakpoints = {
         class="w-screen px-4 h-64"
       >
         <div
-          class="relative w-full h-full bg-center bg-cover rounded-md"
-          :style="{ backgroundImage: 'url(' + item.image.url + ')' }"
+          class="relative w-full h-full bg-center rounded-md bg-no-repeat"
+          :style="{
+            backgroundImage: 'url(' + item.image.url + ')',
+            backgroundSize: slice.primary.image_contain ? 'contain' : 'cover',
+          }"
         >
           <PrismicLink
             :field="item.link"

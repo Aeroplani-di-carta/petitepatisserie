@@ -12,6 +12,10 @@
 				"__TYPE__": "FieldContent",
 				"type": "Number",
 				"value": "5"
+			},
+			"image_contain": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			}
 		},
 		"items": [
@@ -21,7 +25,6 @@
 					[
 						"image",
 						{
-							"__TYPE__": "ImageContent",
 							"url": "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxmcnVpdHxlbnwwfHx8fDE3MDU4NzE0MDl8MA&ixlib=rb-4.0.3&q=85",
 							"alt": "ripe pineapple fruit",
 							"origin": {
@@ -40,6 +43,8 @@
 									"y": 0
 								}
 							},
+							"credits": null,
+							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
 					]
@@ -51,7 +56,6 @@
 					[
 						"image",
 						{
-							"__TYPE__": "ImageContent",
 							"url": "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwzfHxmcnVpdHxlbnwwfHx8fDE3MDU4NzE0MDl8MA&ixlib=rb-4.0.3&q=85",
 							"alt": "red strawberry fruit with white background",
 							"origin": {
@@ -70,6 +74,8 @@
 									"y": 0
 								}
 							},
+							"credits": null,
+							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
 					]
@@ -81,7 +87,6 @@
 					[
 						"image",
 						{
-							"__TYPE__": "ImageContent",
 							"url": "https://images.unsplash.com/photo-1528825871115-3581a5387919?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw3fHxmcnVpdHxlbnwwfHx8fDE3MDU4NzE0MDl8MA&ixlib=rb-4.0.3&q=85",
 							"alt": "half peeled banana fruit",
 							"origin": {
@@ -100,6 +105,8 @@
 									"y": 0
 								}
 							},
+							"credits": null,
+							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
 					]
@@ -111,7 +118,6 @@
 					[
 						"image",
 						{
-							"__TYPE__": "ImageContent",
 							"url": "https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyMHx8ZnJ1aXR8ZW58MHx8fHwxNzA1ODcxNDA5fDA&ixlib=rb-4.0.3&q=85",
 							"alt": "orange sliced papaya",
 							"origin": {
@@ -130,6 +136,8 @@
 									"y": 0
 								}
 							},
+							"credits": null,
+							"__TYPE__": "ImageContent",
 							"thumbnails": {}
 						}
 					]
