@@ -20,21 +20,21 @@ defineProps(
     class="relative mx-2 mt-4 lg:inline-block group lg:mt-0 z-50"
   >
     <div v-if="slice.variation === 'withSubMenu'" class="z-50">
-      <div class="cursor-default lg:py-6 hover:text-slate-500">
+      <div class="cursor-default lg:py-6 hover:text-primary">
         {{ slice.primary.label }}
       </div>
       <ul
-        class="lg:absolute z-50 lg:hidden lg:border-t-4 lg:border-primary flex-col gap-2 lg:bg-neutral-200 lg:shadow-lg lg:group-hover:flex whitespace-nowrap min-w-[16rem]"
+        class="lg:absolute z-50 lg:hidden rounded-xl flex-col gap-2 lg:bg-slate-700 lg:shadow-lg lg:group-hover:flex whitespace-nowrap min-w-[16rem] overflow-hidden"
       >
         <li
           v-for="(item, i) in slice.items"
           :key="i"
-          class="w-full px-4 py-2 first:pt-4 last:pb-4 hover:text-slate-500 hover:bg-white"
+          class="w-full px-4 py-2 first:pt-4 last:pb-4 hover:text-slate-500 hover:bg-white cursor-pointer"
         >
           <PrismicLink
             :field="item.child_link"
             class="inline-block w-full py-1"
-            active-class="font-medium text-slate-500"
+            active-class="underline text-primary"
           >
             {{ item.child_label }}
           </PrismicLink>
