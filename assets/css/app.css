@@ -8,3 +8,16 @@ h5,
 h6 {
   text-wrap: balance;
 }
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 1s;
+  perspective: 100em;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+  transform: translateZ(500px);
+}

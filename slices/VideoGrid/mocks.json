@@ -1,0 +1,130 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "gun",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Velit irure pariatur tempor cillum laboris cillum dolore eiusmod ut nulla dolor eu voluptate. Cillum sunt ipsum sunt laborum veniam anim ipsum occaecat in elit duis. Incididunt proident qui magna."
+						}
+					}
+				]
+			},
+			"colums": {
+				"__TYPE__": "FieldContent",
+				"type": "Number",
+				"value": "3"
+			},
+			"columns": {
+				"__TYPE__": "FieldContent",
+				"type": "Number",
+				"value": "2"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"type": "Text",
+							"value": "Yt"
+						}
+					],
+					[
+						"embed",
+						{
+							"embed_url": "https://www.youtube.com/watch?v=2YPfqED8Tdk",
+							"type": "video",
+							"version": "1.0",
+							"title": "Happy Music Show | Danny Dj - Musica per il Matrimonio in Puglia",
+							"author_name": "Daevent - Wedding & Party in Puglia",
+							"author_url": "https://www.youtube.com/@daeventpuglia",
+							"provider_name": "YouTube",
+							"provider_url": "https://www.youtube.com/",
+							"thumbnail_url": "https://i.ytimg.com/vi/2YPfqED8Tdk/hqdefault.jpg",
+							"thumbnail_width": 480,
+							"thumbnail_height": 360,
+							"html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/2YPfqED8Tdk?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen title=\"Happy Music Show | Danny Dj - Musica per il Matrimonio in Puglia\"></iframe>",
+							"__TYPE__": "EmbedContent",
+							"all": {
+								"embed_url": "https://www.youtube.com/watch?v=2YPfqED8Tdk",
+								"type": "video",
+								"version": "1.0",
+								"title": "Happy Music Show | Danny Dj - Musica per il Matrimonio in Puglia",
+								"author_name": "Daevent - Wedding & Party in Puglia",
+								"author_url": "https://www.youtube.com/@daeventpuglia",
+								"provider_name": "YouTube",
+								"provider_url": "https://www.youtube.com/",
+								"thumbnail_url": "https://i.ytimg.com/vi/2YPfqED8Tdk/hqdefault.jpg",
+								"thumbnail_width": 480,
+								"thumbnail_height": 360,
+								"html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/2YPfqED8Tdk?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen title=\"Happy Music Show | Danny Dj - Musica per il Matrimonio in Puglia\"></iframe>",
+								"height": 113,
+								"width": 200
+							}
+						}
+					]
+				]
+			},
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"embed",
+						{
+							"embed_url": "https://www.youtube.com/watch?v=f8wZoXMY4Pc",
+							"type": "video",
+							"version": "1.0",
+							"title": "Danny Howen Dj for Wedding Party in Puglia, Italy | House Classics Mashup",
+							"author_name": "Danny Howen",
+							"author_url": "https://www.youtube.com/@dannyhowen",
+							"provider_name": "YouTube",
+							"provider_url": "https://www.youtube.com/",
+							"thumbnail_url": "https://i.ytimg.com/vi/f8wZoXMY4Pc/hqdefault.jpg",
+							"thumbnail_width": 480,
+							"thumbnail_height": 360,
+							"html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/f8wZoXMY4Pc?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen title=\"Danny Howen Dj for Wedding Party in Puglia, Italy | House Classics Mashup\"></iframe>",
+							"__TYPE__": "EmbedContent",
+							"all": {
+								"embed_url": "https://www.youtube.com/watch?v=f8wZoXMY4Pc",
+								"type": "video",
+								"version": "1.0",
+								"title": "Danny Howen Dj for Wedding Party in Puglia, Italy | House Classics Mashup",
+								"author_name": "Danny Howen",
+								"author_url": "https://www.youtube.com/@dannyhowen",
+								"provider_name": "YouTube",
+								"provider_url": "https://www.youtube.com/",
+								"thumbnail_url": "https://i.ytimg.com/vi/f8wZoXMY4Pc/hqdefault.jpg",
+								"thumbnail_width": 480,
+								"thumbnail_height": 360,
+								"html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/f8wZoXMY4Pc?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen title=\"Danny Howen Dj for Wedding Party in Puglia, Italy | House Classics Mashup\"></iframe>",
+								"height": 113,
+								"width": 200
+							}
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"type": "Text",
+							"value": "Wedding Dj"
+						}
+					]
+				]
+			}
+		]
+	}
+]
