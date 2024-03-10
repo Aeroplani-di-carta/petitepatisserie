@@ -1,7 +1,7 @@
 {
   "id": "product",
   "label": "Product",
-  "format": "custom",
+  "format": "page",
   "repeatable": true,
   "status": true,
   "json": {

@@ -38,7 +38,10 @@ export default defineNuxtConfig({
     toolbar: false,
     preview: false,
     clientConfig: {
-      routes: [{ type: "home", path: "/" }],
+      routes: [
+        { type: "home", path: "/" },
+        { type: "category", path: "/categorie/:uid" },
+      ],
     },
   },
 });

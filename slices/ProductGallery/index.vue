@@ -32,11 +32,23 @@ const breakpoints = {
   <section
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
-    class="py-12 bg-primary-100"
+    class="py-12"
+    :class="[slice.variation === 'dark' ? 'bg-primary-950' : 'bg-primary-100']"
   >
     <div class="prose mx-auto text-balance text-center">
-      <h2 class="text-black">{{ slice.primary.title }}</h2>
-      <PrismicRichText :field="slice.primary.desxcription"></PrismicRichText>
+      <h2
+        :class="[
+          slice.variation == 'dark' ? 'text-slate-100' : 'text-slate-500',
+        ]"
+      >
+        {{ slice.primary.title }}
+      </h2>
+      <PrismicRichText
+        :field="slice.primary.desxcription"
+        :class="[
+          slice.variation == 'dark' ? 'text-slate-100' : 'text-slate-500',
+        ]"
+      ></PrismicRichText>
     </div>
     <Carousel
       :items-to-show="3"
@@ -47,8 +59,13 @@ const breakpoints = {
       :breakpoints="breakpoints"
     >
       <Slide v-for="(item, i) in slice.items" :key="i" class="px-4 w-full">
-        <div class="text-slate-500 w-full">
-          <PrismicProduct :id="item.product.uid" excerpt />
+        <div
+          class="w-full"
+          :class="[
+            slice.variation == 'dark' ? 'text-slate-100' : 'text-slate-500',
+          ]"
+        >
+          <PrismicProduct :id="(item.product as any).uid" excerpt />
         </div>
       </Slide>
       <template #addons>

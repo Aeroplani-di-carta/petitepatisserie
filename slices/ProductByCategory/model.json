@@ -1,8 +1,8 @@
 {
-  "id": "contact_form",
+  "id": "product_by_category",
   "type": "SharedSlice",
-  "name": "ContactForm",
-  "description": "ContactForm",
+  "name": "ProductByCategory",
+  "description": "ProductByCategory",
   "variations": [
     {
       "id": "default",
@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "category": {
+          "type": "Text",
+          "config": {
+            "label": "Category",
+            "placeholder": ""
+          }
+        },
         "title": {
           "type": "Text",
           "config": {
@@ -25,34 +32,7 @@
             "label": "Description",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em"
-          }
-        }
-      },
-      "items": {}
-    },
-    {
-      "id": "flat",
-      "name": "landing",
-      "docURL": "...",
-      "version": "initial",
-      "description": "Default",
-      "imageUrl": "",
-      "primary": {
-        "title": {
-          "type": "Text",
-          "config": {
-            "label": "Title",
-            "placeholder": ""
-          }
-        },
-        "description": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Description",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,strong,em"
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },

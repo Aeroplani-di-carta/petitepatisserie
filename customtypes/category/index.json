@@ -1,5 +1,5 @@
 {
-  "format": "custom",
+  "format": "page",
   "id": "category",
   "label": "Category",
   "repeatable": true,
@@ -17,6 +17,56 @@
         "config": {
           "label": "Title",
           "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "category_grid": {
+              "type": "SharedSlice"
+            },
+            "product_by_category": {
+              "type": "SharedSlice"
+            },
+            "alternate_grid": {
+              "type": "SharedSlice"
+            },
+            "hero": {
+              "type": "SharedSlice"
+            },
+            "warning": {
+              "type": "SharedSlice"
+            },
+            "contact_form": {
+              "type": "SharedSlice"
+            },
+            "video_grid": {
+              "type": "SharedSlice"
+            },
+            "quotes": {
+              "type": "SharedSlice"
+            },
+            "video": {
+              "type": "SharedSlice"
+            },
+            "text": {
+              "type": "SharedSlice"
+            },
+            "skew_hero": {
+              "type": "SharedSlice"
+            },
+            "newsletter": {
+              "type": "SharedSlice"
+            },
+            "gallery": {
+              "type": "SharedSlice"
+            },
+            "heading": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }

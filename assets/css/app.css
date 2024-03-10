@@ -13,11 +13,32 @@ h6 {
 .page-leave-active {
   transition: all 1s;
   perspective: 100em;
+  transform-style: preserve-3d;
 }
 
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
   filter: blur(1rem);
-  transform: translateZ(500px);
+  transform: translateZ(500px) rotateX(35deg);
+}
+
+.slide-enter-active {
+  animation: slide .5s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.slide-leave-active {
+  animation: slide .3s reverse cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

@@ -20,7 +20,7 @@ const { data: socials } = useAsyncData("social", () =>
       <li v-for="(social, s) in socials?.data.items" :key="s">
         <PrismicLink
           :field="social.link"
-          class="flex items-center gap-2 hover:underline hover:brightness-75 group isolate"
+          class="flex items-center gap-2 hover:underline hover:brightness-75 group isolate cursor-pointer"
         >
           <Icon :name="social.icon!" size="16" />
 

@@ -4,6 +4,22 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type CategoryDocumentDataSlicesSlice =
+  | CategoryGridSlice
+  | ProductByCategorySlice
+  | AlternateGridSlice
+  | HeroSlice
+  | WarningSlice
+  | ContactFormSlice
+  | VideoGridSlice
+  | QuotesSlice
+  | VideoSlice
+  | TextSlice
+  | SkewHeroSlice
+  | NewsletterSlice
+  | GallerySlice
+  | HeadingSlice;
+
 /**
  * Content for Category documents
  */
@@ -18,6 +34,17 @@ interface CategoryDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Category*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CategoryDocumentDataSlicesSlice>;
 }
 
 /**
@@ -338,12 +365,92 @@ export type SocialLinksDocument<Lang extends string = string> =
     Lang
   >;
 
+type StaticPageDocumentDataSlicesSlice =
+  | VideoGridSlice
+  | WarningSlice
+  | VideoSlice
+  | TextSlice
+  | SkewHeroSlice
+  | QuotesSlice
+  | NewsletterSlice
+  | ProductGallerySlice
+  | MultiColumnSlice
+  | HeroSlice
+  | HeadingSlice
+  | GallerySlice
+  | ContactFormSlice
+  | AlternateGridSlice;
+
+/**
+ * Content for Static Page documents
+ */
+interface StaticPageDocumentData {
+  /**
+   * Slice Zone field in *Static Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: static_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<StaticPageDocumentDataSlicesSlice> /**
+   * Meta Description field in *Static Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: static_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Static Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: static_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Static Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: static_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Static Page document from Prismic
+ *
+ * - **API ID**: `static_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type StaticPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<StaticPageDocumentData>,
+    "static_page",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | CategoryDocument
   | HomeDocument
   | NavigationDocument
   | ProductDocument
-  | SocialLinksDocument;
+  | SocialLinksDocument
+  | StaticPageDocument;
 
 /**
  * Primary content in *AlternateGrid → Primary*
@@ -586,11 +693,66 @@ export type AppFooterSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *CategoryGrid → Primary*
+ */
+export interface CategoryGridSliceDefaultPrimary {
+  /**
+   * Title field in *CategoryGrid → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_grid.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *CategoryGrid → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_grid.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for CategoryGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CategoryGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CategoryGridSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CategoryGrid*
+ */
+type CategoryGridSliceVariation = CategoryGridSliceDefault;
+
+/**
+ * CategoryGrid Shared Slice
+ *
+ * - **API ID**: `category_grid`
+ * - **Description**: CategoryGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CategoryGridSlice = prismic.SharedSlice<
+  "category_grid",
+  CategoryGridSliceVariation
+>;
+
+/**
  * Primary content in *ContactForm → Primary*
  */
 export interface ContactFormSliceDefaultPrimary {
   /**
-   * title field in *ContactForm → Primary*
+   * Title field in *ContactForm → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -600,14 +762,14 @@ export interface ContactFormSliceDefaultPrimary {
   title: prismic.KeyTextField;
 
   /**
-   * body field in *ContactForm → Primary*
+   * Description field in *ContactForm → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contact_form.primary.body
+   * - **API ID Path**: contact_form.primary.description
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  body: prismic.RichTextField;
+  description: prismic.RichTextField;
 }
 
 /**
@@ -624,9 +786,47 @@ export type ContactFormSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ContactForm → Primary*
+ */
+export interface ContactFormSliceFlatPrimary {
+  /**
+   * Title field in *ContactForm → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *ContactForm → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * landing variation for ContactForm Slice
+ *
+ * - **API ID**: `flat`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSliceFlat = prismic.SharedSliceVariation<
+  "flat",
+  Simplify<ContactFormSliceFlatPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ContactForm*
  */
-type ContactFormSliceVariation = ContactFormSliceDefault;
+type ContactFormSliceVariation = ContactFormSliceDefault | ContactFormSliceFlat;
 
 /**
  * ContactForm Shared Slice
@@ -1344,6 +1544,71 @@ export type NewsletterSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ProductByCategory → Primary*
+ */
+export interface ProductByCategorySliceDefaultPrimary {
+  /**
+   * Category field in *ProductByCategory → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_by_category.primary.category
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category: prismic.KeyTextField;
+
+  /**
+   * Title field in *ProductByCategory → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_by_category.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *ProductByCategory → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_by_category.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ProductByCategory Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductByCategorySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProductByCategorySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProductByCategory*
+ */
+type ProductByCategorySliceVariation = ProductByCategorySliceDefault;
+
+/**
+ * ProductByCategory Shared Slice
+ *
+ * - **API ID**: `product_by_category`
+ * - **Description**: ProductByCategory
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductByCategorySlice = prismic.SharedSlice<
+  "product_by_category",
+  ProductByCategorySliceVariation
+>;
+
+/**
  * Primary content in *ProductCarousel → Primary*
  */
 export interface ProductCarouselSliceDefaultPrimary {
@@ -1457,9 +1722,64 @@ export type ProductGallerySliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ProductGallery → Primary*
+ */
+export interface ProductGallerySliceDarkPrimary {
+  /**
+   * Title field in *ProductGallery → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_gallery.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Desxcription field in *ProductGallery → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_gallery.primary.desxcription
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  desxcription: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ProductGallery → Items*
+ */
+export interface ProductGallerySliceDarkItem {
+  /**
+   * Product field in *ProductGallery → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product_gallery.items[].product
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  product: prismic.ContentRelationshipField<"product">;
+}
+
+/**
+ * Dark variation for ProductGallery Slice
+ *
+ * - **API ID**: `dark`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProductGallerySliceDark = prismic.SharedSliceVariation<
+  "dark",
+  Simplify<ProductGallerySliceDarkPrimary>,
+  Simplify<ProductGallerySliceDarkItem>
+>;
+
+/**
  * Slice variation for *ProductGallery*
  */
-type ProductGallerySliceVariation = ProductGallerySliceDefault;
+type ProductGallerySliceVariation =
+  | ProductGallerySliceDefault
+  | ProductGallerySliceDark;
 
 /**
  * ProductGallery Shared Slice
@@ -2048,6 +2368,7 @@ declare module "@prismicio/client" {
     export type {
       CategoryDocument,
       CategoryDocumentData,
+      CategoryDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
@@ -2060,6 +2381,9 @@ declare module "@prismicio/client" {
       SocialLinksDocument,
       SocialLinksDocumentData,
       SocialLinksDocumentDataItemsItem,
+      StaticPageDocument,
+      StaticPageDocumentData,
+      StaticPageDocumentDataSlicesSlice,
       AllDocumentTypes,
       AlternateGridSlice,
       AlternateGridSliceDefaultPrimary,
@@ -2073,10 +2397,16 @@ declare module "@prismicio/client" {
       AppFooterSliceDefaultPrimary,
       AppFooterSliceVariation,
       AppFooterSliceDefault,
+      CategoryGridSlice,
+      CategoryGridSliceDefaultPrimary,
+      CategoryGridSliceVariation,
+      CategoryGridSliceDefault,
       ContactFormSlice,
       ContactFormSliceDefaultPrimary,
+      ContactFormSliceFlatPrimary,
       ContactFormSliceVariation,
       ContactFormSliceDefault,
+      ContactFormSliceFlat,
       GallerySlice,
       GallerySliceDefaultPrimary,
       GallerySliceDefaultItem,
@@ -2112,6 +2442,10 @@ declare module "@prismicio/client" {
       NewsletterSliceVariation,
       NewsletterSliceDefault,
       NewsletterSliceDark,
+      ProductByCategorySlice,
+      ProductByCategorySliceDefaultPrimary,
+      ProductByCategorySliceVariation,
+      ProductByCategorySliceDefault,
       ProductCarouselSlice,
       ProductCarouselSliceDefaultPrimary,
       ProductCarouselSliceDefaultItem,
@@ -2120,8 +2454,11 @@ declare module "@prismicio/client" {
       ProductGallerySlice,
       ProductGallerySliceDefaultPrimary,
       ProductGallerySliceDefaultItem,
+      ProductGallerySliceDarkPrimary,
+      ProductGallerySliceDarkItem,
       ProductGallerySliceVariation,
       ProductGallerySliceDefault,
+      ProductGallerySliceDark,
       QuotesSlice,
       QuotesSliceDefaultPrimary,
       QuotesSliceVariation,

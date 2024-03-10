@@ -8,6 +8,7 @@ export const components = defineSliceZoneComponents({
     () => import("./AlternateGrid/index.vue")
   ),
   app_footer: defineAsyncComponent(() => import("./AppFooter/index.vue")),
+  category_grid: defineAsyncComponent(() => import("./CategoryGrid/index.vue")),
   contact_form: defineAsyncComponent(() => import("./ContactForm/index.vue")),
   gallery: defineAsyncComponent(() => import("./Gallery/index.vue")),
   heading: defineAsyncComponent(() => import("./Heading/index.vue")),
@@ -16,6 +17,9 @@ export const components = defineSliceZoneComponents({
   menu_item: defineAsyncComponent(() => import("./MenuItem/index.vue")),
   multi_column: defineAsyncComponent(() => import("./MultiColumn/index.vue")),
   newsletter: defineAsyncComponent(() => import("./Newsletter/index.vue")),
+  product_by_category: defineAsyncComponent(
+    () => import("./ProductByCategory/index.vue")
+  ),
   product_carousel: defineAsyncComponent(
     () => import("./ProductCarousel/index.vue")
   ),
