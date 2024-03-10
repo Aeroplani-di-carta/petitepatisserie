@@ -29,7 +29,7 @@ const breakpoints = {
   <section
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
-    class="h-full py-12"
+    class="h-full py-24"
   >
     <div class="py-6 text-center">
       <h2 class="py-4 text-3xl">{{ slice.primary.title }}</h2>

@@ -15,24 +15,32 @@ defineProps(
   <section
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
-    class="h-[50vh] lg:h-[70vh] z-0"
+    class="lg:h-[70vh] z-0"
+    :class="[slice.variation === 'imageRight' ? 'h-[65vh]' : 'h-[50vh]']"
   >
     <div class="grid h-full grid-cols-2 grid-rows-1 gap-6">
       <div
         :class="{
           'col-start-1 col-end-3 row-start-1 row-end-2 bg-white':
             slice.variation === 'center',
+          'col-start-2 col-end-3 row-start-1 row-end-2 py-12 flex items-center justify-center':
+            slice.variation === 'imageRight',
         }"
       >
         <PrismicImage
           :field="slice.primary.image"
-          class="object-cover object-center w-full h-full"
+          class="object-center h-full"
+          :class="[
+            slice.variation === 'imageRight'
+              ? 'aspect-3/4 rounded-xl object-contain'
+              : 'w-full object-cover',
+          ]"
         />
       </div>
       <div
+        v-if="slice.variation === 'center'"
         class="bg-[radial-gradient(ellipse_at_center,_#0003_0%,#000_90%)] bg-opacity-40 bg-blend-multiply"
         :class="{
-          hidden: slice.variation !== 'center',
           'col-start-1 col-end-3 row-start-1 row-end-2':
             slice.variation === 'center',
         }"
@@ -42,6 +50,7 @@ defineProps(
         :class="{
           'col-start-1 col-end-3 row-start-1 row-end-2 items-center':
             slice.variation === 'center',
+          'cols-start-1 col-end-2': slice.variation === 'imageRight',
         }"
       >
         <p
