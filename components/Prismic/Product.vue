@@ -20,7 +20,6 @@ if (props.id) {
   product.value = props.prod;
 }
 
-console.log("Nounted Prod", product.value, props.id);
 // });
 </script>
 

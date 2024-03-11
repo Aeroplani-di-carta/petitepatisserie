@@ -24,7 +24,6 @@ const { data: similar } = await useAsyncData(
       filters: [prismic.filter.similar(id as string, 3)],
     })
 );
-console.log("Similar", similar.value);
 </script>
 
 <template>
