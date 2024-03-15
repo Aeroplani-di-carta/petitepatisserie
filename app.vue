@@ -1,6 +1,13 @@
 <script setup lang="ts">
 useHead({
   titleTemplate: (title) => `${title} | Petite patisserie`,
+  script: [
+    {
+      src: "https://static.cdn.prismic.io/prismic.js?new=true&repo=petitepatisserie",
+      async: true,
+      defer: true,
+    },
+  ],
 });
 </script>
 

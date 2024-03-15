@@ -28,7 +28,6 @@ onClickOutside(menuItem, () => {
       <button
         class="cursor-pointer lg:py-6 hover:text-primary"
         @click="isOpen = !isOpen"
-        @mouseover="isOpen = true"
       >
         {{ slice.primary.label }}
       </button>
