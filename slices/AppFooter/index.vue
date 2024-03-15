@@ -18,8 +18,6 @@ defineProps(
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
   >
-    Placeholder component for app_footer (variation: {{ slice.variation }})
-    Slices
     <footer class="py-12 bg-neutral-100">
       <div class="container">
         <Logo />
