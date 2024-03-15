@@ -36,7 +36,7 @@ export default defineNuxtConfig({
   prismic: {
     endpoint: "petitepatisserie",
     toolbar: false,
-    preview: false,
+    preview: "/preview",
     clientConfig: {
       routes: [
         { type: "home", path: "/" },
