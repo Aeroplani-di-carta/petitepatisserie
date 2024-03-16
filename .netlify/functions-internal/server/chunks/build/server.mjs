@@ -1,4 +1,4 @@
-import { version, ref, watchEffect, watch, getCurrentInstance, defineAsyncComponent, defineComponent, useSlots, reactive, h, computed, resolveComponent, onUpdated, shallowRef, toRef, onServerPrefetch, inject, markRaw, isRef, unref, provide, shallowReactive, Suspense, nextTick, Transition, useSSRContext, hasInjectionContext, mergeProps, withCtx, createVNode, createApp, effectScope, resolveDynamicComponent, onErrorCaptured, isReadonly, isShallow, isReactive, toRaw, getCurrentScope, onScopeDispose, onUnmounted } from 'vue';
+import { hasInjectionContext, inject, version, ref, watchEffect, watch, getCurrentInstance, defineAsyncComponent, defineComponent, useSlots, reactive, h, computed, resolveComponent, onUpdated, shallowRef, toRef, onServerPrefetch, markRaw, isRef, unref, provide, shallowReactive, Suspense, nextTick, Transition, useSSRContext, mergeProps, withCtx, createVNode, createApp, effectScope, getCurrentScope, onScopeDispose, resolveDynamicComponent, onErrorCaptured, isReadonly, isShallow, isReactive, toRaw, onUnmounted } from 'vue';
 import { d as useRuntimeConfig$1, $ as $fetch, h as createError$1, l as klona, m as hasProtocol, j as joinURL, p as parseURL, n as parseQuery, o as createHooks, w as withQuery, q as isScriptProtocol, r as withTrailingSlash, t as withoutTrailingSlash, v as sanitizeStatusCode, x as parse, y as getRequestHeader, z as destr, A as isEqual, B as setCookie, C as getCookie, D as deleteCookie } from '../runtime.mjs';
 import { getActiveHead } from 'unhead';
 import { defineHeadPlugin, composableNames } from '@unhead/shared';
@@ -7,7 +7,7 @@ import sync, { getFrameData } from 'framesync';
 import { inertia, animate, velocityPerSecond, cubicBezier, linear, easeIn, easeInOut, easeOut, circIn, circInOut, circOut, backIn, backInOut, backOut, anticipate, bounceIn, bounceInOut, bounceOut } from 'popmotion';
 import { number, px, color, degrees, scale, alpha, progressPercentage, filter, complex } from 'style-value-types';
 import { isHTMLTag } from '@vue/shared';
-import { asLink, isFilled, asImageWidthSrcSet, asImagePixelDensitySrcSet, asImageSrc, asText, asHTML, isRepositoryEndpoint, getRepositoryName, createClient, filter as filter$1, cookie, asLinkAttrs, asDate, documentToLinkField } from '@prismicio/client';
+import { asLink, isFilled, asImageWidthSrcSet, asImagePixelDensitySrcSet, asImageSrc, asHTML, isRepositoryEndpoint, getRepositoryName, createClient, filter as filter$1, cookie, asText, asLinkAttrs, asDate, documentToLinkField } from '@prismicio/client';
 import { extendTailwindMerge } from 'tailwind-merge';
 import { ssrRenderAttrs, ssrRenderComponent, ssrRenderSuspense, ssrRenderVNode } from 'vue/server-renderer';
 import 'node:http';
@@ -658,12 +658,44 @@ function toArray(value) {
 }
 const _routes = [
   {
+    name: "prismic-preview",
+    path: "/preview",
+    meta: {},
+    alias: [],
+    redirect: void 0 ,
+    component: () => import('./preview-BOOYBjOj.mjs').then((m) => m.default || m)
+  },
+  {
+    name: "uid",
+    path: "/:uid()",
+    meta: {},
+    alias: [],
+    redirect: void 0 ,
+    component: () => import('./_uid_-CwDCLaT3.mjs').then((m) => m.default || m)
+  },
+  {
+    name: "categorie-uid",
+    path: "/categorie/:uid()",
+    meta: {},
+    alias: [],
+    redirect: void 0 ,
+    component: () => import('./_uid_-D5CpUOfs.mjs').then((m) => m.default || m)
+  },
+  {
     name: "index",
     path: "/",
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./index-B6KpWPxd.mjs').then((m) => m.default || m)
+    component: () => import('./index-LSYzt0sy.mjs').then((m) => m.default || m)
+  },
+  {
+    name: "prodotti-uid",
+    path: "/prodotti/:uid()",
+    meta: {},
+    alias: [],
+    redirect: void 0 ,
+    component: () => import('./_uid_-aXBAmlSX.mjs').then((m) => m.default || m)
   },
   {
     name: "slice-simulator",
@@ -671,7 +703,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0 ,
-    component: () => import('./slice-simulator-D3UteFsW.mjs').then((m) => m.default || m)
+    component: () => import('./slice-simulator-B0nslkwE.mjs').then((m) => m.default || m)
   }
 ];
 const _wrapIf = (component2, props, slots) => {
@@ -848,7 +880,7 @@ const cfg0 = defineAppConfig({
 });
 const inlineConfig = {
   "nuxt": {
-    "buildId": "55853861-bd0f-4776-bcf0-f36072ef0364"
+    "buildId": "2d22c451-9ecd-40b7-851a-b73b929cf3ec"
   },
   "ui": {
     "primary": "green",
@@ -1085,8 +1117,8 @@ const revive_payload_server_eJ33V7gbc6 = /* @__PURE__ */ defineNuxtPlugin({
     }
   }
 });
-const LazyIcon = defineAsyncComponent(() => import('./Icon-BL837Ujo.mjs').then((r) => r.default));
-const LazyIconCSS = defineAsyncComponent(() => import('./IconCSS-IIGyzv_M.mjs').then((r) => r.default));
+const LazyIcon = defineAsyncComponent(() => import('./Icon-B_Ch9MOY.mjs').then((r) => r.default));
+const LazyIconCSS = defineAsyncComponent(() => import('./IconCSS-BBs11PWE.mjs').then((r) => r.default));
 const lazyGlobalComponents = [
   ["Icon", LazyIcon],
   ["IconCSS", LazyIconCSS]
@@ -1231,6 +1263,51 @@ function useEventListener(...args) {
     cleanup();
   };
   tryOnScopeDispose(stop);
+  return stop;
+}
+function onClickOutside(target, handler, options = {}) {
+  const { window: window2 = defaultWindow, ignore = [], capture = true, detectIframe = false } = options;
+  if (!window2)
+    return noop;
+  let shouldListen = true;
+  const shouldIgnore = (event) => {
+    return ignore.some((target2) => {
+      if (typeof target2 === "string") {
+        return Array.from(window2.document.querySelectorAll(target2)).some((el) => el === event.target || event.composedPath().includes(el));
+      } else {
+        const el = unrefElement(target2);
+        return el && (event.target === el || event.composedPath().includes(el));
+      }
+    });
+  };
+  const listener = (event) => {
+    const el = unrefElement(target);
+    if (!el || el === event.target || event.composedPath().includes(el))
+      return;
+    if (event.detail === 0)
+      shouldListen = !shouldIgnore(event);
+    if (!shouldListen) {
+      shouldListen = true;
+      return;
+    }
+    handler(event);
+  };
+  const cleanup = [
+    useEventListener(window2, "click", listener, { passive: true, capture }),
+    useEventListener(window2, "pointerdown", (e) => {
+      const el = unrefElement(target);
+      shouldListen = !shouldIgnore(e) && !!(el && !e.composedPath().includes(el));
+    }, { passive: true }),
+    detectIframe && useEventListener(window2, "blur", (event) => {
+      setTimeout(() => {
+        var _a;
+        const el = unrefElement(target);
+        if (((_a = window2.document.activeElement) == null ? void 0 : _a.tagName) === "IFRAME" && !(el == null ? void 0 : el.contains(window2.document.activeElement)))
+          handler(event);
+      }, 0);
+    })
+  ].filter(Boolean);
+  const stop = () => cleanup.forEach((fn) => fn());
   return stop;
 }
 function useMounted() {
@@ -4127,8 +4204,8 @@ const plugins = [
   plugin_server_XNCxeHyTuP
 ];
 const layouts = {
-  default: () => import('./default-CsdmLUJu.mjs').then((m) => m.default || m),
-  home: () => import('./home-BCiG97aL.mjs').then((m) => m.default || m)
+  default: () => import('./default-OO-uLY-F.mjs').then((m) => m.default || m),
+  home: () => import('./home-CLTli53M.mjs').then((m) => m.default || m)
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -4375,7 +4452,14 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __ssrInlineRender: true,
   setup(__props) {
     useHead({
-      titleTemplate: (title) => `${title} | Petite patisserie`
+      titleTemplate: (title) => `${title} | Petite patisserie`,
+      script: [
+        {
+          src: "https://static.cdn.prismic.io/prismic.js?new=true&repo=petitepatisserie",
+          async: true,
+          defer: true
+        }
+      ]
     });
     return (_ctx, _push, _parent, _attrs) => {
       const _component_NuxtLayout = __nuxt_component_0;
@@ -4505,5 +4589,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { PrismicLink as P, SliceZone as S, __nuxt_component_0$1 as _, usePrismic as a, useAsyncData as b, createError as c, useAppConfig as d, entry$1 as default, defineSliceZoneComponents as e, PrismicImage as f, getSliceComponentProps as g, PrismicRichText as h, PrismicText as i, useState as j, useNuxtApp as k, appConfig as l, mergeConfig as m, getSlotsChildren as n, useDebounceFn as o, defu as p, looseToNumber as q, PrismicEmbed as r, useHead as u };
+export { PrismicImage as P, SliceZone as S, __nuxt_component_0$1 as _, usePrismic as a, useRouter as b, createError as c, useRoute as d, entry$1 as default, useAsyncData as e, PrismicRichText as f, useAppConfig as g, defineSliceZoneComponents as h, getSliceComponentProps as i, useState as j, useNuxtApp as k, PrismicLink as l, mergeConfig as m, appConfig as n, onClickOutside as o, getSlotsChildren as p, useDebounceFn as q, defu as r, looseToNumber as s, PrismicEmbed as t, useHead as u };
 //# sourceMappingURL=server.mjs.map

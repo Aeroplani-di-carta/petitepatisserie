@@ -8,7 +8,7 @@ const prismic = usePrismic();
 const { data: products } = useAsyncData(`[products_${props.id}]`, () =>
   prismic.client.getAllByType("product", {
     filters: [prismic.filter.at("my.product.category", props.id)],
-    orderings: ["my.product.uid"],
+    orderings: [{ field: "my.product.uid", direction: "asc" }],
   })
 );
 console.log("DATA PRODS", props.id, products.value);
