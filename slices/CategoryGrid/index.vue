@@ -14,7 +14,7 @@ defineProps(
 
 const { data: categories } = useAsyncData("categories", () =>
   prismic.client.getAllByType("category", {
-    orderings: ["my.category.uid"],
+    orderings: [{ field: "my.category.uid", direction: "asc" }],
   })
 );
 console.log("Cats", categories.value);

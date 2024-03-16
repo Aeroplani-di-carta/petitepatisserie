@@ -1,0 +1,6 @@
+const index_vue_vue_type_style_index_0_scoped_9537465a_lang = "form[data-v-9537465a]{width:100%!important}form fieldset[data-v-9537465a]:not(:first-child){margin-top:1.5rem}form fieldset legend[data-v-9537465a]{font-size:1.125rem;font-weight:700;line-height:1.75rem;margin-bottom:.5rem}form input[data-v-9537465a],form select[data-v-9537465a],form textarea[data-v-9537465a]{border-radius:.25rem;border-width:1px;width:100%;--tw-border-opacity:1;border-color:rgb(var(--color-primary-300)/var(--tw-border-opacity));padding:.5rem}form input[data-v-9537465a]:focus,form select[data-v-9537465a]:focus,form textarea[data-v-9537465a]:focus{outline:2px solid transparent;outline-offset:2px}form textarea[data-v-9537465a]{min-height:15ch}@media (min-width:1024px){form textarea[data-v-9537465a]{min-height:20ch}}form:invalid button.sparkle[data-v-9537465a]{cursor:not-allowed;opacity:.2}form:invalid button[type=submit][data-v-9537465a]{cursor:not-allowed;--tw-bg-opacity:1;background-color:#d4d4d4;background-color:rgb(212 212 212/var(--tw-bg-opacity))}";
+
+const indexStyles_BgLmRkrN = [index_vue_vue_type_style_index_0_scoped_9537465a_lang];
+
+export { indexStyles_BgLmRkrN as default };
+//# sourceMappingURL=index-styles.BgLmRkrN.mjs.map

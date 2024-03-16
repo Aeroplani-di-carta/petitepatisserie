@@ -1,9 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
 
   nitro: {
-    preset: "netlify",
+    preset: "netlify-static",
+  },
+  routeRules: {
+    "/**": { isr: 86400 },
   },
 
   devtools: { enabled: true },
@@ -36,11 +39,11 @@ export default defineNuxtConfig({
   prismic: {
     endpoint: "petitepatisserie",
     toolbar: false,
-    preview: "/preview",
     clientConfig: {
       routes: [
         { type: "home", path: "/" },
         { type: "category", path: "/categorie/:uid" },
+        { type: "static_page", path: "/:uid" },
       ],
     },
   },

@@ -3404,7 +3404,7 @@ const appConfig0 = defineAppConfig({
 
 const inlineAppConfig = {
   "nuxt": {
-    "buildId": "55853861-bd0f-4776-bcf0-f36072ef0364"
+    "buildId": "2d22c451-9ecd-40b7-851a-b73b929cf3ec"
   },
   "ui": {
     "primary": "green",
@@ -3474,6 +3474,14 @@ const _inlineRuntimeConfig = {
           {
             "type": "home",
             "path": "/"
+          },
+          {
+            "type": "category",
+            "path": "/categorie/:uid"
+          },
+          {
+            "type": "static_page",
+            "path": "/:uid"
           }
         ]
       },
@@ -3482,7 +3490,7 @@ const _inlineRuntimeConfig = {
       "richTextSerializer": "~/app/prismic/richTextSerializer",
       "injectComponents": true,
       "components": {},
-      "preview": false,
+      "preview": "/preview",
       "toolbar": false
     }
   },
@@ -5323,7 +5331,7 @@ const errorHandler = (async function errorhandler(error, event) {
   return send(event, html);
 });
 
-const _lazy_jqConm = () => import('./routes/renderer.mjs');
+const _lazy_jqConm = () => import('./routes/renderer.mjs').then(function (n) { return n.r; });
 
 const handlers = [
   { route: '/__nuxt_error', handler: _lazy_jqConm, lazy: true, middleware: false, method: undefined },
