@@ -39,10 +39,12 @@ export default defineNuxtConfig({
   prismic: {
     endpoint: "petitepatisserie",
     toolbar: false,
+    preview: false,
     clientConfig: {
       routes: [
         { type: "home", path: "/" },
         { type: "category", path: "/categorie/:uid" },
+        { type: "product", path: "/prodotto/:uid" },
         { type: "static_page", path: "/:uid" },
       ],
     },
